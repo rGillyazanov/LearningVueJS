@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue JS</title>
+</head>
+<body>
+    <div id="app">
+        <!-- Model связывает inputValue с input. При изменении inputValue в input будет также меняться h2 заголовок -->
+        <input type="text" v-model.lazy="inputValue">
+
+        <h2>{{ inputValue }}</h2>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                inputValue: 'Initial value'
+            }
+        });
+    </script>
+</body>
+</html>
