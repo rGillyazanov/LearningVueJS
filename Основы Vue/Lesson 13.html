@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue JS</title>
+</head>
+<body>
+    <div id="app">
+        <!-- Удаляет элемент из DOM -->
+        <h1 v-if="isVisible">I am visible!</h1>
+        <h1 v-else>I am not visible</h1>
+
+        <!-- Не удаляет элемент из DOM, а скрывает его display: none -->
+        <h1 v-show="isVisible">I am visible!</h1>
+        <h1 v-show="!isVisible">I am not visible</h1>
+
+        <button @click="isVisible = !isVisible">Toggle</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                isVisible: false
+            }
+        });
+    </script>
+</body>
+</html>
