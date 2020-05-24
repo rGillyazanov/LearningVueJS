@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="car">
         <h3>Name: {{ carName }}</h3>
         <p>Year: {{ carYear }}</p>
     </div>
@@ -8,15 +8,15 @@
 <script>
     export default {
         name: "Car",
-        data() {
-            return {
-                carName: 'Ford',
-                carYear: 2015
-            }
+        props: {
+            carName: String,
+            carYear: Number
         }
     }
 </script>
 
 <style scoped>
-
+    .car {
+        border: 1px solid black;
+    }
 </style>
