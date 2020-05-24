@@ -4,11 +4,10 @@
         <car :carName="carName"
              :carYear="carYear"
              :changeFunc="changeNameToAudi"
-             :counter="counter"
              @nameChanged="carName = $event"
              @counterUpdated="counter = $event"></car>
 
-        <counter :counter="counter"></counter>
+        <counter></counter>
     </div>
 </template>
 
@@ -20,8 +19,7 @@ export default {
     data () {
         return {
             carName: 'Ford',
-            carYear: 2018,
-            counter: 0
+            carYear: 2018
         }
     },
     methods: {
