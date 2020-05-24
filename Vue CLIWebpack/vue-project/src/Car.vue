@@ -1,6 +1,6 @@
 <template>
     <div class="car">
-        <h3>Name: {{ carName }}</h3>
+        <h3>Name: {{ carName }} \ {{ reverseName }}</h3>
         <p>Year: {{ carYear }}</p>
     </div>
 </template>
@@ -9,8 +9,20 @@
     export default {
         name: "Car",
         props: {
-            carName: String,
-            carYear: Number
+            carName: {
+                type: String,
+                required: true
+            },
+            carYear: {
+                type: Number,
+                required: true,
+                default: 2015
+            }
+        },
+        computed: {
+            reverseName() {
+                return this.carName.split('').reverse().join('');
+            }
         }
     }
 </script>
