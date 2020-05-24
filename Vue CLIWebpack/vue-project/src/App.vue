@@ -1,22 +1,29 @@
 <template>
     <div>
-        <car></car>
-        <counter></counter>
+        <car>
+            <h2 slot="title">{{ carName }}</h2>
+            <p slot="text">Lorem ipsum dolor.</p>
+        </car>
     </div>
 </template>
 
 <script>
 import Car from './Car'
-import Counter from "./Counter";
 
 export default {
+    data() {
+        return {
+            carName: 'Ford'
+        }
+    },
     components: {
-        car: Car,
-        counter: Counter
+        car: Car
     }
 }
 </script>
 
-<style>
-
+<style scoped>
+    h2 {
+        color: red;
+    }
 </style>
