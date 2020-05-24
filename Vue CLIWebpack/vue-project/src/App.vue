@@ -4,18 +4,24 @@
         <car :carName="carName"
              :carYear="carYear"
              :changeFunc="changeNameToAudi"
-             @nameChanged="carName = $event"></car>
+             :counter="counter"
+             @nameChanged="carName = $event"
+             @counterUpdated="counter = $event"></car>
+
+        <counter :counter="counter"></counter>
     </div>
 </template>
 
 <script>
-import Car from './Car.vue'
+import Car from './Car'
+import Counter from "./Counter";
 
 export default {
     data () {
         return {
             carName: 'Ford',
-            carYear: 2018
+            carYear: 2018,
+            counter: 0
         }
     },
     methods: {
@@ -24,7 +30,8 @@ export default {
         }
     },
     components: {
-        car: Car
+        car: Car,
+        counter: Counter
     }
 }
 </script>

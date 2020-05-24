@@ -5,6 +5,7 @@
 
         <button @click="changeName">Change name</button>
         <button @click="changeFunc()">Change function from parent</button>
+        <button @click="updateCounter()">Update counter</button>
     </div>
 </template>
 
@@ -21,7 +22,8 @@
                 required: true,
                 default: 2015
             },
-            changeFunc: Function
+            changeFunc: Function,
+            counter: Number
         },
         computed: {
             reverseName() {
@@ -32,6 +34,9 @@
             changeName() {
                 this.carName = 'Mazda';
                 this.$emit('nameChanged', this.carName);
+            },
+            updateCounter() {
+                this.$emit('counterUpdated', this.counter + 1);
             }
         }
     }
