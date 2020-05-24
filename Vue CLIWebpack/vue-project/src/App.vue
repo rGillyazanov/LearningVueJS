@@ -1,7 +1,7 @@
 <template>
     <div>
         <h1>Parent: {{ carName }}</h1>
-        <car :carName="carName" :carYear="carYear"></car>
+        <car :carName="carName" :carYear="carYear" @nameChanged="carName = $event"></car>
     </div>
 </template>
 
