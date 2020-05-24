@@ -1,15 +1,22 @@
 <template>
-    <h1>{{ msg }}</h1>
+    <div>
+        <h1>{{ msg }}</h1>
+        <car></car>
+    </div>
 </template>
 
 <script>
+import Car from './Car.vue'
+
 export default {
-  name: 'app',
-  data () {
-    return {
-      msg: 'Welcome to Your Vue.js App'
+    data () {
+        return {
+            msg: 'Welcome to Your Vue.js App'
+        }
+    },
+    components: {
+        car: Car
     }
-  }
 }
 </script>
 
