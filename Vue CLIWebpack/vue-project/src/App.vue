@@ -9,28 +9,20 @@
         <h2>{{ title | uppercase }}</h2>
         <h2>{{ title | uppercase | lowercase }}</h2>
 
-        <input type="text" v-model="searchName">
-
-        <ul>
-            <li v-for="name of filteredNames">{{ name }}</li>
-        </ul>
+        <list></list>
     </div>
 </template>
 
 <script>
+import listMixin from "./listMixin";
+
 export default {
     data() {
         return {
-            title: 'Hello I am div',
-            names: ['Vlad', 'Max', 'Elena', 'Igor'],
-            searchName: ''
+            title: 'Hello I am div'
         }
     },
-    computed: {
-        filteredNames() {
-            return this.names.filter(name => name.toLowerCase().indexOf(this.searchName) !== -1)
-        }
-    },
+    mixins: [listMixin],
     filters: {
         lowercase(value) {
             return value.toLowerCase();
