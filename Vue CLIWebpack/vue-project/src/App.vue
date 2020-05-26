@@ -31,6 +31,17 @@
         <ul>
             <li v-for="s in social">{{ s }}</li>
         </ul>
+        <label for="">
+            <input type="radio" value="instagram" v-model="socialRadio"> Instagram
+        </label>
+        <label for="">
+            <input type="radio" value="vk" v-model="socialRadio"> Vk
+        </label>
+        <label for="">
+            <input type="radio" value="facebook" v-model="socialRadio"> Facebook
+        </label>
+        <hr>
+        <p>{{ socialRadio }}</p>
     </div>
 </template>
 
@@ -43,7 +54,8 @@ export default {
             title: 'Hello I am div',
             name: '',
             textarea: 'I am text area',
-            social: ['vk']
+            social: ['vk'],
+            socialRadio: 'facebook'
         }
     },
     mixins: [listMixin],
