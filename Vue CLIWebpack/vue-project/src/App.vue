@@ -42,6 +42,10 @@
         </label>
         <hr>
         <p>{{ socialRadio }}</p>
+
+        <select v-model="defaultSocial">
+            <option v-for="s in socialSelect">{{ s }}</option>
+        </select>
     </div>
 </template>
 
@@ -55,7 +59,9 @@ export default {
             name: '',
             textarea: 'I am text area',
             social: ['vk'],
-            socialRadio: 'facebook'
+            socialRadio: 'facebook',
+            socialSelect: ['instagram', 'vk', 'facebook'],
+            defaultSocial: 'vk'
         }
     },
     mixins: [listMixin],
