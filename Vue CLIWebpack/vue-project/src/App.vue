@@ -14,6 +14,9 @@
         <h2>Form inputs</h2>
         <input type="text" v-model.lazy="name">
         <p>{{ name }}</p>
+
+        <textarea name="" id="" cols="30" rows="10" v-model="textarea"></textarea>
+        <p>{{ textarea }}</p>
     </div>
 </template>
 
@@ -24,7 +27,8 @@ export default {
     data() {
         return {
             title: 'Hello I am div',
-            name: ''
+            name: '',
+            textarea: 'I am text area'
         }
     },
     mixins: [listMixin],
@@ -44,4 +48,12 @@ export default {
 </script>
 
 <style scoped>
+    textarea {
+        height: 100px;
+        width: 400px;
+    }
+
+    p {
+        white-space: pre;
+    }
 </style>
