@@ -17,6 +17,20 @@
 
         <textarea name="" id="" cols="30" rows="10" v-model="textarea"></textarea>
         <p>{{ textarea }}</p>
+
+        <label for="">
+            <input type="checkbox" value="instagram" v-model="social"> Instagram
+        </label>
+        <label for="">
+            <input type="checkbox" value="vk" v-model="social"> Vk
+        </label>
+        <label for="">
+            <input type="checkbox" value="facebook" v-model="social"> Facebook
+        </label>
+        <hr>
+        <ul>
+            <li v-for="s in social">{{ s }}</li>
+        </ul>
     </div>
 </template>
 
@@ -28,7 +42,8 @@ export default {
         return {
             title: 'Hello I am div',
             name: '',
-            textarea: 'I am text area'
+            textarea: 'I am text area',
+            social: ['vk']
         }
     },
     mixins: [listMixin],
