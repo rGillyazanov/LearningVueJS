@@ -46,6 +46,8 @@
         <select v-model="defaultSocial">
             <option v-for="s in socialSelect">{{ s }}</option>
         </select>
+        <hr>
+        <input type="text" v-model.number="age">
     </div>
 </template>
 
@@ -61,7 +63,13 @@ export default {
             social: ['vk'],
             socialRadio: 'facebook',
             socialSelect: ['instagram', 'vk', 'facebook'],
-            defaultSocial: 'vk'
+            defaultSocial: 'vk',
+            age: 20
+        }
+    },
+    watch: {
+        age(value) {
+            console.log(value);
         }
     },
     mixins: [listMixin],
