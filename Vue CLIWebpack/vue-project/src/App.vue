@@ -48,11 +48,18 @@
         </select>
         <hr>
         <input type="text" v-model.number="age">
+
+        <on-off v-model="switched"></on-off>
+        <div>
+            <h3 v-if="switched">Component is enabled</h3>
+            <h3 v-else>Component is disabled</h3>
+        </div>
     </div>
 </template>
 
 <script>
 import listMixin from "./listMixin";
+import OnOff from "./OnOff";
 
 export default {
     data() {
@@ -64,13 +71,17 @@ export default {
             socialRadio: 'facebook',
             socialSelect: ['instagram', 'vk', 'facebook'],
             defaultSocial: 'vk',
-            age: 20
+            age: 20,
+            switched: true
         }
     },
     watch: {
         age(value) {
             console.log(value);
         }
+    },
+    components: {
+        onOff: OnOff
     },
     mixins: [listMixin],
     filters: {
