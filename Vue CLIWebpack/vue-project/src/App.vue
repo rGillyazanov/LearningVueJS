@@ -61,54 +61,61 @@
                 <div class="col-12">
                     <h1>Валидация</h1>
                     <h2>Установка и настройка проекта</h2>
-                    <div class="form-group">
-                        <label for="email">Email:</label>
-                        <input type="email"
-                               id="email"
-                               class="form-control"
-                               :class="{'is-invalid': $v.email.$error}"
-                                v-model="email"
-                                @blur="$v.email.$touch()"
+                    <form action="" @submit.prevent="onSubmit">
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email"
+                                   id="email"
+                                   class="form-control"
+                                   :class="{'is-invalid': $v.email.$error}"
+                                   v-model="email"
+                                   @blur="$v.email.$touch()"
+                            >
+                            <div class="invalid-feedback" v-if="!$v.email.required">
+                                Email field is required
+                            </div>
+                            <div class="invalid-feedback" v-if="!$v.email.email">
+                                This field should be an email
+                            </div>
+                            <div class="invalid-feedback" v-if="!$v.email.exitsEmail">
+                                This email already exists
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password:</label>
+                            <input type="password"
+                                   id="password"
+                                   class="form-control"
+                                   :class="{'is-invalid': $v.password.$error}"
+                                   v-model="password"
+                                   @blur="$v.password.$touch()"
+                            >
+                            <div class="invalid-feedback" v-if="!$v.password.minLength">
+                                Min length of password is {{ $v.password.$params.minLength.min }}. Now it's {{ password.length }}.
+                            </div>
+                            <div class="invalid-feedback" v-if="!$v.password.required">
+                                Password field is required
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Confirm password:</label>
+                            <input type="password"
+                                   id="confirm"
+                                   class="form-control"
+                                   :class="{'is-invalid': $v.confirm.$error}"
+                                   v-model="confirm"
+                                   @blur="$v.confirm.$touch()"
+                            >
+                            <div class="invalid-feedback" v-if="!$v.confirm.sameAs">
+                                Passwords should match
+                            </div>
+                        </div>
+                        <button class="btn btn-success" type="submit"
+                                :disabled="$v.$invalid"
                         >
-                        <div class="invalid-feedback" v-if="!$v.email.required">
-                            Email field is required
-                        </div>
-                        <div class="invalid-feedback" v-if="!$v.email.email">
-                            This field should be an email
-                        </div>
-                        <div class="invalid-feedback" v-if="!$v.email.exitsEmail">
-                            This email already exists
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="password">Password:</label>
-                        <input type="password"
-                               id="password"
-                               class="form-control"
-                               :class="{'is-invalid': $v.password.$error}"
-                               v-model="password"
-                               @blur="$v.password.$touch()"
-                        >
-                        <div class="invalid-feedback" v-if="!$v.password.minLength">
-                            Min length of password is {{ $v.password.$params.minLength.min }}. Now it's {{ password.length }}.
-                        </div>
-                        <div class="invalid-feedback" v-if="!$v.password.required">
-                            Password field is required
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="password">Confirm password:</label>
-                        <input type="password"
-                               id="confirm"
-                               class="form-control"
-                               :class="{'is-invalid': $v.confirm.$error}"
-                               v-model="confirm"
-                               @blur="$v.confirm.$touch()"
-                        >
-                        <div class="invalid-feedback" v-if="!$v.confirm.sameAs">
-                            Passwords should match
-                        </div>
-                    </div>
+                            Submit
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -135,6 +142,13 @@ export default {
             email: '',
             password: '',
             confirm: ''
+        }
+    },
+    methods: {
+        onSubmit() {
+            console.log("Submit");
+            console.log('Email: ' + this.email);
+            console.log('Password: ' + this.password);
         }
     },
     validations: {
