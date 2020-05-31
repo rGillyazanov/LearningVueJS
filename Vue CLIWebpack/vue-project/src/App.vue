@@ -54,6 +54,21 @@
             <h3 v-if="switched">Component is enabled</h3>
             <h3 v-else>Component is disabled</h3>
         </div>
+        <hr>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h1>Валидация</h1>
+                    <h2>Установка и настройка проекта</h2>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" class="form-control"
+                            v-model="email">
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -72,7 +87,8 @@ export default {
             socialSelect: ['instagram', 'vk', 'facebook'],
             defaultSocial: 'vk',
             age: 20,
-            switched: true
+            switched: true,
+            email: ''
         }
     },
     watch: {
