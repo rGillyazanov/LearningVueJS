@@ -77,6 +77,35 @@
                             This field should be an email
                         </div>
                     </div>
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input type="password"
+                               id="password"
+                               class="form-control"
+                               :class="{'is-invalid': $v.password.$error}"
+                               v-model="password"
+                               @blur="$v.password.$touch()"
+                        >
+                        <div class="invalid-feedback" v-if="!$v.password.minLength">
+                            Min length of password is {{ $v.password.$params.minLength.min }}. Now it's {{ password.length }}.
+                        </div>
+                        <div class="invalid-feedback" v-if="!$v.password.required">
+                            Password field is required
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Confirm password:</label>
+                        <input type="password"
+                               id="confirm"
+                               class="form-control"
+                               :class="{'is-invalid': $v.confirm.$error}"
+                               v-model="confirm"
+                               @blur="$v.confirm.$touch()"
+                        >
+                        <div class="invalid-feedback" v-if="!$v.confirm.sameAs">
+                            Passwords should match
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -86,7 +115,7 @@
 <script>
 import listMixin from "./listMixin";
 import OnOff from "./OnOff";
-import { required, email } from 'vuelidate/lib/validators'
+import { required, email, minLength, sameAs } from 'vuelidate/lib/validators'
 
 export default {
     data() {
@@ -100,13 +129,22 @@ export default {
             defaultSocial: 'vk',
             age: 20,
             switched: true,
-            email: ''
+            email: '',
+            password: '',
+            confirm: ''
         }
     },
     validations: {
         email: {
             required,
             email
+        },
+        password: {
+            required,
+            minLength: minLength(6)
+        },
+        confirm: {
+            sameAs: sameAs('password')
         }
     },
     watch: {
