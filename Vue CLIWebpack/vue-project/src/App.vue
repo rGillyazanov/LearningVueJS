@@ -63,13 +63,20 @@
                     <h2>Установка и настройка проекта</h2>
                     <div class="form-group">
                         <label for="email">Email:</label>
-                        <input type="email" id="email" class="form-control"
-                            v-model="email"
-                            @blur="$v.email.$touch()">
+                        <input type="email"
+                               id="email"
+                               class="form-control"
+                               :class="{'is-invalid': $v.email.$error}"
+                                v-model="email"
+                                @blur="$v.email.$touch()"
+                        >
+                        <div class="invalid-feedback" v-if="!$v.email.required">
+                            Email field is required
+                        </div>
+                        <div class="invalid-feedback" v-if="!$v.email.email">
+                            This field should be an email
+                        </div>
                     </div>
-                    <pre>
-                        {{ $v.email }}
-                    </pre>
                 </div>
             </div>
         </div>
