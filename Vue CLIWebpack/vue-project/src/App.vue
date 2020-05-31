@@ -64,8 +64,12 @@
                     <div class="form-group">
                         <label for="email">Email:</label>
                         <input type="email" id="email" class="form-control"
-                            v-model="email">
+                            v-model="email"
+                            @blur="$v.email.$touch()">
                     </div>
+                    <pre>
+                        {{ $v.email }}
+                    </pre>
                 </div>
             </div>
         </div>
@@ -75,6 +79,7 @@
 <script>
 import listMixin from "./listMixin";
 import OnOff from "./OnOff";
+import { required, email } from 'vuelidate/lib/validators'
 
 export default {
     data() {
@@ -89,6 +94,12 @@ export default {
             age: 20,
             switched: true,
             email: ''
+        }
+    },
+    validations: {
+        email: {
+            required,
+            email
         }
     },
     watch: {
