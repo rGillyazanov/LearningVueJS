@@ -76,6 +76,9 @@
                         <div class="invalid-feedback" v-if="!$v.email.email">
                             This field should be an email
                         </div>
+                        <div class="invalid-feedback" v-if="!$v.email.exitsEmail">
+                            This email already exists
+                        </div>
                     </div>
                     <div class="form-group">
                         <label for="password">Password:</label>
@@ -137,7 +140,8 @@ export default {
     validations: {
         email: {
             required,
-            email
+            email,
+            exitsEmail: (newEmail) => newEmail !== 'test@mail.ru'
         },
         password: {
             required,
