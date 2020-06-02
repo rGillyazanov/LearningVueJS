@@ -3,6 +3,7 @@ import App from './App.vue'
 import ColorDirective from "./color";
 import List from "./List";
 import Vuelidate from "vuelidate";
+import VueRouter from "vue-router";
 
 Vue.directive('colored', ColorDirective);
 Vue.filter('uppercase', (value) => value.toUpperCase())
@@ -12,6 +13,7 @@ Vue.mixin({
     console.log('beforeCreated');
   }
 })
+Vue.use(VueRouter)
 
 Vue.use(Vuelidate)
 
